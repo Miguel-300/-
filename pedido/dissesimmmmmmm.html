@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estamos Namorando!</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            z-index: 10;
+        }
+        .activity {
+            margin: 20px 0;
+        }
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            width: 50px;
+            height: 50px;
+            opacity: 0.8;
+            animation: floatUp 10s linear infinite;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="activity">
+            <h1>Obrigado por dizer sim!</h1>
+            <p>Vamos celebrar esse momento especial com um jantar no dia 12 de junho, Dia dos Namorados? Mal posso esperar para passar essa data ao seu lado!</p>
+        </div>
+    </div>
+    
+    <!-- áudio e a função para tocar automaticamente -->
+    <audio id="background-music" src="./ytmp3free.cc_jao-alinhamento-milenar-lyric-video-youtubemp3free.org.mp3" preload="auto"></audio>
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('background-music').play();
+            }, 3000);
+        };
+        
+        // URL da imagem do coração
+        const heartImageUrl = './Captura_de_tela_23-5-2024_163121_www.freepik.com-removebg-preview.png'; // Substitua por sua URL de imagem
+
+        // Função para criar corações aleatórios
+        function createHearts() {
+            for (let i = 0; i < 7; i++) {
+                let heart = document.createElement('img');
+                heart.src = heartImageUrl;
+                heart.className = 'heart';
+                let leftPosition = Math.random() * 100;
+                heart.style.left = leftPosition + 'vw';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 10000); // Remove o coração após 10 segundos para evitar acúmulo de elementos
+            }
+        }
+
+        // Cria corações a cada intervalo
+        setInterval(createHearts, 3000); // Cria corações a cada 3 segundos
+    </script>
+</body>
+</html>
